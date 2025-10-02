@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/><title>BEAMING METHODS</title>
+<style>
+:root{--neon:#ff2d2d;--panel:rgba(10,8,8,0.75)}html,body{height:100%;margin:0;font-family:Arial;color:#fff;background:#000}#matrix{position:fixed;inset:0;z-index:-1}.wrap{position:relative;z-index:10;padding:28px;text-align:center}h1{color:#fff;letter-spacing:2px;margin:0}h2.big{color:var(--neon);font-size:1.6rem;margin:8px 0 18px}.grid{display:flex;gap:24px;justify-content:center;flex-wrap:wrap;margin-top:22px}.card{background:var(--panel);width:46%;min-width:260px;padding:22px;border-radius:14px;border:2px solid rgba(255,45,45,0.06);box-shadow:0 8px 30px rgba(255,45,45,0.06);text-align:left;color:#fff}.card h3{color:var(--neon);margin:0 0 10px}.btn{display:inline-block;margin-top:16px;padding:10px 18px;background:var(--neon);color:#111;border-radius:10px;text-decoration:none;font-weight:700;box-shadow:0 8px 24px rgba(255,45,45,0.12)}.footerBtn{display:block;margin:28px auto 0;padding:14px 20px;background:var(--neon);color:#111;border-radius:12px;text-decoration:none;max-width:520px}
+</style></head><body>
+<canvas id="matrix"></canvas>
+<div class="wrap">
+  <h1>BEAMING METHODS</h1>
+  <h2 class="big">EXCLUSIVE TUTORIALS & SERVER LINKS</h2>
+
+  <div class="grid">
+    <div class="card">
+      <h3>TUTORIALS</h3>
+      <ul>
+        <li>STEP-BY-STEP GUIDES</li>
+        <li>VIDEO TUTORIALS</li>
+        <li>TROUBLESHOOTING</li>
+      </ul>
+      <a class="btn" href="tutorials.html">VIEW TUTORIALS</a>
+    </div>
+
+    <div class="card">
+      <h3>SERVERS</h3>
+      <ul>
+        <li>GROW A GARDEN SERVERS</li>
+        <li>MM2 SERVERS</li>
+        <li>BLOX FRUITS SERVERS</li>
+      </ul>
+      <a class="btn" href="#">VIEW SERVERS</a>
+    </div>
+  </div>
+
+  <a class="footerBtn" href="index.html">GO BACK TO HOME</a>
+</div>
+
+<script>
+(function(){
+  const canvas=document.getElementById('matrix'),ctx=canvas.getContext('2d');
+  let fontSize=Math.max(12,Math.floor(window.innerWidth/120));
+  function reset(){canvas.width=window.innerWidth;canvas.height=window.innerHeight;fontSize=Math.max(12,Math.floor(window.innerWidth/120));columns=Math.floor(canvas.width/fontSize);drops.length=0;for(let i=0;i<columns;i++)drops[i]=Math.random()*canvas.height;}
+  let letters="ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789ｶﾀｶﾅ".split(''),columns=0,drops=[];
+  reset();
+  function draw(){ctx.fillStyle="rgba(0,0,0,0.06)";ctx.fillRect(0,0,canvas.width,canvas.height);ctx.fillStyle="#ff2d2d";ctx.font=fontSize+'px monospace';for(let i=0;i<columns;i++){const t=letters[Math.floor(Math.random()*letters.length)];ctx.fillText(t,i*fontSize,drops[i]);drops[i]+=fontSize*(0.6+Math.random());if(drops[i]>canvas.height&&Math.random()>0.98)drops[i]=0;}}
+  setInterval(draw,40);window.addEventListener('resize',reset);
+})();
+</script>
+</body></html>
