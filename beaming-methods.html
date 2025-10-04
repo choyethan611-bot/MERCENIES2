@@ -2,31 +2,177 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>MERCENIES BEAMING METHODS</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MERCENIES</title>
   <style>
-    body { background:#000; color:#fff; font-family:'Orbitron',sans-serif; text-align:center; }
-    h1 { color:#ff2d2d; text-shadow:0 0 15px #ff2d2d; margin:20px 0; }
-    .grid { display:flex; justify-content:center; gap:20px; flex-wrap:wrap; }
-    .card { background:rgba(20,20,20,0.9); border:2px solid #ff2d2d; border-radius:12px;
-      width:250px; padding:20px; box-shadow:0 0 20px #ff2d2d88; }
-    .card h2 { color:#ff2d2d; }
-    .btn { display:block; margin-top:15px; padding:12px; background:#ff2d2d; color:#fff;
-      text-decoration:none; font-weight:bold; border-radius:8px; box-shadow:0 0 15px #ff2d2d; }
-    .btn:hover { background:#cc0000; box-shadow:0 0 25px #ff2d2d; }
+    /* Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      background: black;
+      color: white;
+      text-align: center;
+      overflow: hidden;
+    }
+
+    /* Canvas background for matrix effect */
+    canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+    }
+
+    header {
+      padding: 50px 20px 20px;
+    }
+
+    header h1 {
+      font-size: 3rem;
+      color: #ff1a1a;
+      text-shadow: 0 0 20px red;
+    }
+
+    header p {
+      color: #aaa;
+      margin-top: 10px;
+      letter-spacing: 2px;
+    }
+
+    .btn {
+      display: inline-block;
+      margin: 20px auto;
+      padding: 15px 30px;
+      background: #ff1a1a;
+      color: white;
+      font-weight: bold;
+      border-radius: 8px;
+      box-shadow: 0 0 20px red;
+      cursor: pointer;
+      text-decoration: none;
+      transition: 0.2s;
+    }
+
+    .btn:hover {
+      background: #e60000;
+      box-shadow: 0 0 30px red;
+    }
+
+    .container {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      margin-top: 40px;
+      flex-wrap: wrap;
+    }
+
+    .card {
+      background: #111;
+      border: 2px solid #ff1a1a;
+      padding: 30px;
+      width: 280px;
+      border-radius: 10px;
+      box-shadow: 0 0 25px red;
+      transition: 0.3s;
+    }
+
+    .card:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 40px red;
+    }
+
+    .card h2 {
+      color: #ff1a1a;
+      margin-bottom: 15px;
+    }
+
+    .card p {
+      color: #bbb;
+    }
+
+    footer {
+      margin-top: 40px;
+      padding: 20px;
+      font-size: 0.9rem;
+      color: #888;
+    }
   </style>
 </head>
 <body>
-  <h1>MERCENIES BEAMING METHODS</h1>
-  <div class="grid">
+  <!-- Matrix Background -->
+  <canvas id="matrix"></canvas>
+
+  <header>
+    <h1>🍕 MERCENIES</h1>
+    <p>COMMUNITY PORTAL · RESOURCES · TUTORIALS</p>
+    <a href="#" class="btn">JOIN OUR COMMUNITY</a>
+  </header>
+
+  <div class="container">
     <div class="card">
-      <h2>TUTORIALS</h2>
-      <a href="tutorials.html" class="btn">VIEW TUTORIALS</a>
+      <h2>MERCENIES BEAMING SITES</h2>
+      <p>FAST · SECURE · EXCLUSIVE</p>
     </div>
     <div class="card">
-      <h2>SERVERS</h2>
-      <a href="#" class="btn">VIEW SERVERS</a>
+      <h2>THE BYPASSERS</h2>
+      <p>EMAIL TOOLS · REFRESHER</p>
+    </div>
+    <div class="card">
+      <h2>BEAMING METHODS</h2>
+      <p>TUTORIALS · SERVERS</p>
     </div>
   </div>
-  <a href="index.html" class="btn">GO BACK TO HOME</a>
+
+  <footer>
+    © 2025 MERCENIES
+  </footer>
+
+  <!-- Matrix Background Script -->
+  <script>
+    const canvas = document.getElementById("matrix");
+    const ctx = canvas.getContext("2d");
+
+    canvas.height = window.innerHeight;
+    canvas.width = window.innerWidth;
+
+    const letters = "01ABCDEFGHJKLMNOPQRSTUVWXYZ0123456789";
+    const fontSize = 14;
+    const columns = canvas.width / fontSize;
+
+    const drops = [];
+    for (let x = 0; x < columns; x++) drops[x] = 1;
+
+    function draw() {
+      ctx.fillStyle = "rgba(0, 0, 0, 0.1)";
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+      ctx.fillStyle = "#ff1a1a"; // red letters
+      ctx.font = fontSize + "px monospace";
+
+      for (let i = 0; i < drops.length; i++) {
+        const text = letters.charAt(Math.floor(Math.random() * letters.length));
+        ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+
+        if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+          drops[i] = 0;
+        }
+        drops[i]++;
+      }
+    }
+
+    setInterval(draw, 35);
+
+    window.addEventListener("resize", () => {
+      canvas.height = window.innerHeight;
+      canvas.width = window.innerWidth;
+    });
+  </script>
 </body>
 </html>
