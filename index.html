@@ -3,88 +3,172 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>MERCENIES PORTAL</title>
+  <title>MERCENIES</title>
   <style>
-    body, html {
-      margin: 0; padding: 0;
+    /* Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
       font-family: Arial, sans-serif;
-      color: white; text-align: center;
-      overflow-x: hidden;
     }
-    h1 {
+
+    body {
+      background: black;
+      color: white;
+      text-align: center;
+      overflow: hidden;
+    }
+
+    /* Canvas background for matrix effect */
+    canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+    }
+
+    header {
+      padding: 50px 20px 20px;
+    }
+
+    header h1 {
       font-size: 3rem;
-      margin-top: 40px;
-      color: #ff0000;
-      text-shadow: 0 0 15px #ff0000;
+      color: #ff1a1a;
+      text-shadow: 0 0 20px red;
     }
-    a { color: #fff; text-decoration: none; }
+
+    header p {
+      color: #aaa;
+      margin-top: 10px;
+      letter-spacing: 2px;
+    }
+
     .btn {
       display: inline-block;
-      margin: 15px; padding: 12px 25px;
-      font-size: 1.2rem; color: white;
-      background: #ff0000;
-      border-radius: 8px; transition: 0.3s;
-      box-shadow: 0 0 12px #ff0000;
+      margin: 20px auto;
+      padding: 15px 30px;
+      background: #ff1a1a;
+      color: white;
+      font-weight: bold;
+      border-radius: 8px;
+      box-shadow: 0 0 20px red;
+      cursor: pointer;
+      text-decoration: none;
+      transition: 0.2s;
     }
-    .btn:hover { background: #cc0000; box-shadow: 0 0 20px #ff0000; }
-    .categories { margin-top: 60px; display: flex; flex-direction: column; align-items: center; gap: 20px; }
-    .category {
-      background: rgba(0,0,0,0.7); padding: 20px; border-radius: 10px;
-      width: 80%; max-width: 400px; box-shadow: 0 0 10px #ff0000;
+
+    .btn:hover {
+      background: #e60000;
+      box-shadow: 0 0 30px red;
     }
-    .category h2 { margin-bottom: 10px; color: #ff0000; }
-    #matrix {
-      position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-      z-index: -1; background: black;
+
+    .container {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      margin-top: 40px;
+      flex-wrap: wrap;
+    }
+
+    .card {
+      background: #111;
+      border: 2px solid #ff1a1a;
+      padding: 30px;
+      width: 280px;
+      border-radius: 10px;
+      box-shadow: 0 0 25px red;
+      transition: 0.3s;
+    }
+
+    .card:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 40px red;
+    }
+
+    .card h2 {
+      color: #ff1a1a;
+      margin-bottom: 15px;
+    }
+
+    .card p {
+      color: #bbb;
+    }
+
+    footer {
+      margin-top: 40px;
+      padding: 20px;
+      font-size: 0.9rem;
+      color: #888;
     }
   </style>
 </head>
 <body>
+  <!-- Matrix Background -->
   <canvas id="matrix"></canvas>
 
-  <h1>☄️ MERCENIES PORTAL</h1>
-  <a href="https://discord.gg/MGJPWzYqBq" class="btn">JOIN OUR COMMUNITY</a>
+  <header>
+    <h1>🍕 MERCENIES</h1>
+    <p>COMMUNITY PORTAL · RESOURCES · TUTORIALS</p>
+    <a href="#" class="btn">JOIN OUR COMMUNITY</a>
+  </header>
 
-  <div class="categories">
-    <div class="category">
-      <h2>BYPASSERS</h2>
-      <a href="bypassers.html" class="btn">ENTER</a>
+  <div class="container">
+    <div class="card">
+      <h2>MERCENIES BEAMING SITES</h2>
+      <p>FAST · SECURE · EXCLUSIVE</p>
     </div>
-    <div class="category">
+    <div class="card">
+      <h2>THE BYPASSERS</h2>
+      <p>EMAIL TOOLS · REFRESHER</p>
+    </div>
+    <div class="card">
       <h2>BEAMING METHODS</h2>
-      <a href="beaming-methods.html" class="btn">EXPLORE</a>
-    </div>
-    <div class="category">
-      <h2>TUTORIALS</h2>
-      <a href="tutorials.html" class="btn">VIEW</a>
+      <p>TUTORIALS · SERVERS</p>
     </div>
   </div>
 
+  <footer>
+    © 2025 MERCENIES
+  </footer>
+
+  <!-- Matrix Background Script -->
   <script>
-    const canvas = document.getElementById('matrix');
-    const ctx = canvas.getContext('2d');
+    const canvas = document.getElementById("matrix");
+    const ctx = canvas.getContext("2d");
+
     canvas.height = window.innerHeight;
     canvas.width = window.innerWidth;
 
-    const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ123456789@#$%^&*()".split("");
+    const letters = "01ABCDEFGHJKLMNOPQRSTUVWXYZ0123456789";
     const fontSize = 14;
     const columns = canvas.width / fontSize;
+
     const drops = [];
     for (let x = 0; x < columns; x++) drops[x] = 1;
 
     function draw() {
-      ctx.fillStyle = "rgba(0, 0, 0, 0.05)";
+      ctx.fillStyle = "rgba(0, 0, 0, 0.1)";
       ctx.fillRect(0, 0, canvas.width, canvas.height);
-      ctx.fillStyle = "#ff0000";
+
+      ctx.fillStyle = "#ff1a1a"; // red letters
       ctx.font = fontSize + "px monospace";
+
       for (let i = 0; i < drops.length; i++) {
-        const text = letters[Math.floor(Math.random() * letters.length)];
+        const text = letters.charAt(Math.floor(Math.random() * letters.length));
         ctx.fillText(text, i * fontSize, drops[i] * fontSize);
-        if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) drops[i] = 0;
+
+        if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+          drops[i] = 0;
+        }
         drops[i]++;
       }
     }
-    setInterval(draw, 33);
+
+    setInterval(draw, 35);
+
     window.addEventListener("resize", () => {
       canvas.height = window.innerHeight;
       canvas.width = window.innerWidth;
