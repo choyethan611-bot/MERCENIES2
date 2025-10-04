@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>MERCENIES — Tutorials</title>
+<style>
+:root{--bg:#060506;--red:#ff1f1f;--card:#1d0f0f}
+*{box-sizing:border-box}html,body{height:100%;margin:0;font-family:Orbitron,Segoe UI,Arial,sans-serif;background:var(--bg);color:#fff}
+.canvas{position:fixed;inset:0;z-index:0}
+.container{position:relative;z-index:2;max-width:1200px;margin:0 auto;padding:40px 20px;text-align:center}
+.logo{font-size:56px;color:var(--red);letter-spacing:6px;text-shadow:0 0 24px rgba(255,0,0,0.85);margin:8px 0}
+.btn{display:inline-block;margin:12px;padding:14px 24px;border-radius:12px;background:linear-gradient(90deg,var(--red),#ff6b6b);color:#fff;text-decoration:none;box-shadow:0 10px 30px rgba(255,0,0,0.12)}
+.cards{display:flex;gap:28px;justify-content:center;margin-top:28px;flex-wrap:wrap}
+.card{background:linear-gradient(180deg, rgba(20,6,6,0.8), rgba(10,4,4,0.6));border-radius:16px;padding:20px;width:300px;box-shadow:0 8px 40px rgba(0,0,0,0.6);border:1px solid rgba(255,0,0,0.06)}
+.card h2{color:var(--red);margin:10px 0;font-size:22px}
+.features{list-style:none;padding:0;margin:8px 0;color:#c7bcbc;text-align:left}
+.footer{margin-top:40px;color:rgba(255,255,255,0.6);font-size:14px}
+.small{font-size:13px;color:rgba(255,200,200,0.9);margin-top:6px}
+.header-cta{margin-top:10px}
+.back{display:inline-block;margin:8px 0;padding:10px 14px;background:linear-gradient(90deg,var(--red),#cc0000);color:#fff;border-radius:10px;text-decoration:none}
+.site-title{font-size:42px;color:var(--red);text-shadow:0 0 20px rgba(255,0,0,0.8);margin:6px 0}
+.card .launch{margin-top:12px;display:block;text-align:center}
+.accordion{max-width:900px;margin:20px auto;text-align:left}
+.accordion-item{background:rgba(10,6,6,0.6);border:1px solid rgba(255,0,0,0.06);padding:12px;border-radius:10px;margin-bottom:10px}
+.accordion-item button{width:100%;text-align:left;padding:12px;background:none;border:none;color:#fff;font-size:18px}
+.accordion-content{display:none;padding:12px 6px;color:#e6cfcf}
+.linklist a{display:block;color:var(--red);text-decoration:none;margin:6px 0}
+</style>
+</head><body>
+
+<div class="container">
+  <a class="back" href="methods.html">← BEAMING METHODS</a>
+  <div class="site-title">STEP-BY-STEP GUIDES</div>
+  <div class="accordion">
+    <div class="accordion-item">
+      <button>How to Unhook Yourself</button>
+      <div class="accordion-content">
+        <p>Your Hits Should Say <strong>MERCENIES notifier</strong> — if not unhook yourself like that:</p>
+        <ol>
+          <li>Go to our website</li>
+          <li>Click on insights</li>
+          <li>Click delete website</li>
+          <li>Confirm</li>
+          <li>Confirm again</li>
+          <li>Done!</li>
+        </ol>
+      </div>
+    </div>
+    <div class="accordion-item">
+      <button>How to Create Webhook (Mobile)</button>
+      <div class="accordion-content">
+        <p>Video guide:</p>
+        <div style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;">
+          <iframe src="https://www.youtube.com/embed/9oClR9rlkIc" style="position:absolute;left:0;top:0;width:100%;height:100%;" frameborder="0" allowfullscreen></iframe>
+        </div>
+      </div>
+    </div>
+    <div class="accordion-item">
+      <button>How to Use Cookie (Device Guides)</button>
+      <div class="accordion-content">
+        <h4>Extensions</h4>
+        <div class="linklist">
+          <a href="https://play.google.com/store/apps/details?id=com.kiwibrowser.browser" target="_blank">Kiwi (Android)</a>
+          <a href="https://chromewebstore.google.com/detail/cookie-editor/hlkenndednhfkekhgcdicdfddnkalmdm" target="_blank">Cookie Editor (Chrome)</a>
+          <a href="https://github.com/Moustachauve/cookie-editor/releases/download/v1.12.1/cookie-editor-chrome-all-permissions1.12.1.zip" target="_blank">Cookie Editor (Download)</a>
+        </div>
+        <h4>Tutorials</h4>
+        <div class="linklist">
+          <a href="https://streamable.com/75qpxd" target="_blank">Android Guide</a>
+          <a href="https://streamable.com/9mfj27" target="_blank">iPhone Guide</a>
+          <a href="https://streamable.com/qy3kc4" target="_blank">PC Guide</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer">© 2025 MERCENIES | ALL RIGHTS RESERVED</div>
+</div>
+
+<script>
+(function(){
+  const canvas = document.createElement('canvas');
+  canvas.id = 'matrixCanvas';
+  canvas.className = 'canvas';
+  document.body.appendChild(canvas);
+  const ctx = canvas.getContext('2d');
+  function resize(){canvas.width=innerWidth;canvas.height=innerHeight}
+  addEventListener('resize', resize);
+  resize();
+  const cols = Math.floor(canvas.width/14);
+  const drops = new Array(cols).fill(0).map(()=>Math.random()*canvas.height);
+  const letters = 'ｱｲｳｴｵｶｷｸｹｺｻｼｽｾｿ0123456789abcdefghijklmnopqrstuvwxyz';
+  function draw(){
+    ctx.fillStyle='rgba(0,0,0,0.35)';ctx.fillRect(0,0,canvas.width,canvas.height);
+    ctx.font='14px monospace';
+    for(let i=0;i<cols;i++){
+      const text = letters[Math.floor(Math.random()*letters.length)];
+      ctx.fillStyle='rgba(255,40,40,0.14)';
+      ctx.fillText(text,i*14,drops[i]);
+      drops[i]+=14;
+      if(drops[i]>canvas.height && Math.random()>0.975) drops[i]=0;
+    }
+  }
+  setInterval(draw,40);
+})();
+</script>
+<script>
+document.addEventListener('click', function(e){
+  if(e.target.matches('.accordion-item button')){
+    const btn = e.target;
+    const content = btn.nextElementSibling;
+    if(content.style.display==='block'){ content.style.display='none'; }
+    else { document.querySelectorAll('.accordion-content').forEach(c=>c.style.display='none'); content.style.display='block'; }
+  }
+});
+</script>
+</body></html>
