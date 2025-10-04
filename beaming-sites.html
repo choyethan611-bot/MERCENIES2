@@ -1,15 +1,132 @@
 <!DOCTYPE html>
-<html lang="en"><head><meta charset="UTF-8"><title>MERCENIES BEAMING SITES</title>
-<style>
-body{background:#000;color:#fff;font-family:'Orbitron',sans-serif;text-align:center;}
-h1{color:#ff2d2d;text-shadow:0 0 15px #ff2d2d;margin:20px 0;}
-.card{background:rgba(20,20,20,0.9);border:2px solid #ff2d2d;border-radius:12px;width:300px;margin:40px auto;padding:30px;box-shadow:0 0 20px #ff2d2d88;}
-.card h2{color:#ff2d2d;}
-.btn{display:inline-block;padding:15px 30px;background:#ff2d2d;color:#fff;text-decoration:none;font-weight:bold;border-radius:8px;box-shadow:0 0 15px #ff2d2d;}
-.btn:hover{background:#cc0000;box-shadow:0 0 25px #ff2d2d;}
-</style></head><body>
-<h1>MERCENIES BEAMING SITES</h1>
-<div class="card"><h2>☄️ MERCENIES MAIN</h2><p>PREMIUM ACCESS · FAST & SECURE</p>
-<a href="https://app.beamers.si/u/MERCENIES" class="btn" target="_blank">LAUNCH MERCENIES MAIN</a></div>
-<a href="index.html" class="btn">GO BACK TO HOME</a>
-</body></html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Beaming Sites</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: Arial, sans-serif;
+      color: white;
+      text-align: center;
+      overflow-x: hidden;
+    }
+    canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: -1;
+    }
+    header {
+      padding: 20px;
+      background: rgba(0, 0, 0, 0.7);
+      font-size: 26px;
+      font-weight: bold;
+    }
+    .site-container {
+      margin: 40px auto;
+      width: 80%;
+      max-width: 800px;
+    }
+    .site-box {
+      background: rgba(255, 0, 0, 0.2);
+      border: 1px solid red;
+      border-radius: 10px;
+      padding: 20px;
+      margin: 15px 0;
+      transition: 0.3s;
+    }
+    .site-box:hover {
+      background: rgba(255, 0, 0, 0.5);
+    }
+    .site-box a {
+      color: #ff3333;
+      font-weight: bold;
+      text-decoration: none;
+      font-size: 18px;
+    }
+    .back-btn {
+      display: inline-block;
+      margin-top: 30px;
+      padding: 12px 25px;
+      background: red;
+      color: white;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+    .back-btn:hover {
+      background: darkred;
+    }
+    footer {
+      margin-top: 50px;
+      padding: 15px;
+      background: rgba(0, 0, 0, 0.7);
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+  <!-- Matrix Background -->
+  <canvas id="matrix"></canvas>
+
+  <header>BEAMING SITES</header>
+  <div class="site-container">
+    <div class="site-box">
+      <p>Logged.tg</p>
+      <a href="https://www.logged.tg/auth/mercenies" target="_blank">Mercenies X Injuries</a>
+    </div>
+    <div class="site-box">
+      <p>Old Beaming Site</p>
+      <a href="https://example.com" target="_blank">Visit Old Beaming Site</a>
+    </div>
+  </div>
+  <a href="index.html" class="back-btn">GO BACK TO METHODS</a>
+  <footer>© 2023 HUNTERZ | ALL RIGHTS RESERVED</footer>
+
+  <script>
+    // MATRIX BACKGROUND SCRIPT
+    const canvas = document.getElementById("matrix");
+    const ctx = canvas.getContext("2d");
+
+    canvas.height = window.innerHeight;
+    canvas.width = window.innerWidth;
+
+    const letters = "アカサタナハマヤラワ0123456789".split("");
+
+    const fontSize = 14;
+    const columns = canvas.width / fontSize;
+
+    const drops = [];
+    for (let i = 0; i < columns; i++) {
+      drops[i] = 1;
+    }
+
+    function draw() {
+      ctx.fillStyle = "rgba(0, 0, 0, 0.05)";
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+      ctx.fillStyle = "#ff0000";
+      ctx.font = fontSize + "px monospace";
+
+      for (let i = 0; i < drops.length; i++) {
+        const text = letters[Math.floor(Math.random() * letters.length)];
+        ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+
+        if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+          drops[i] = 0;
+        }
+        drops[i]++;
+      }
+    }
+
+    setInterval(draw, 33);
+  </script>
+</body>
+</html>
